@@ -290,7 +290,7 @@ print(ar[9])
 initialState=addRoundKey(initialState,ar[9])
 print("initial state")
 printMatrix(initialState)
-for i in range(10,0,-1):
+for i in range(1,11):
     print("--------Round "+str(i)+"---------")
     initialState = rightshift(initialState)
     print("After shift rows")
@@ -299,15 +299,14 @@ for i in range(10,0,-1):
     initialState = substitute(initialState,sinverse)
     print(initialState)
     print("After key expansion")
-    k=[10-i-1]
-    if(i==1):
+    if(i==10):
         print(init)
         initialState=addRoundKey(initialState,init)
     else:
         print(ar[10-i-1])
-        initialState=addRoundKey(initialState,ar[i-1])
+        initialState=addRoundKey(initialState,ar[10-i-1])
     printMatrix(initialState)
-    if(i!=1):
+    if(i!=10):
         print("After Mix column")
         initialState = mixCol(initialState)
         printMatrix(initialState)
